@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmarks</title>
+</head>
+<body>
+    <div>
+
+        <form action="/bookmarks" method="post">
+        <input type='text' id='add-input' name='newUrl'>
+        <input type='submit' id='add-button' value='Add'>
+        </form>
+
+        <ul id="bookmark-list">
+        <% bookmarks.forEach((bookmark, index)=>{%>
+            <li>
+        <p><%= bookmark.url %></p>
+        <form action="/bookmarks" method="post">
+            <input type="text" name="test" value="a value">
+            <input name="urlToDelete" type="hidden" value=<%=bookmark.url%> >
+            <input id=`delete-bookmark-<%= index %>` type="submit" value="Delete">
+        </form>
+        </li>
+        <%})%>
+        </ul>
+    </div>
+ 
+</body>
+</html>

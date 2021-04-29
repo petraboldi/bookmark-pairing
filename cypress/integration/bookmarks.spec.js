@@ -1,14 +1,19 @@
 
 describe ('Tests page', function(){
     beforeEach(function() {
-        cy.visit('/')
+        cy.visit('/bookmarks')
     })
-    it('test 1', function(){
-        cy.contains('Hello')
-    })
-
-    it('Tests page displays list of bookmarks', function(){
+    it('Tests page displays list of bookmarks', function() {
         cy.contains('www.facebook.com')
-        cy.contains('www.instagram.com')
+    })
+      it('adding url to bookmarks', function() {
+        cy.get('#add-input').type('www.twitter.com')
+        cy.get('#add-submit').click()
+        cy.contains('www.twitter.com')
+    })
+        it('deleting  url from bookmarks', function() {
+        cy.contains('www.twitter.com')
+        cy.get('#delete-button').click()
+        cy.get('#bookmark-05').should('not.exist')
     })
 })
